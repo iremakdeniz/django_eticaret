@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+    <div class="container mt-5" style="
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 72vh;">
+        <form action="{% url 'spicy:user_register' %}" method="post">
+            {% csrf_token %}
+            <div style="
+            width: 300px;
+            height: 350px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-top: 50px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);"
+            >
+                <div>
+
+                    <div>
+                        {% if error_message %}
+                            <p>{{ error_message }}</p>
+                        {% endif %}
+                       <div style="margin-bottom: 5px;">
+                            <div>
+                                <label for="{{ form.username.id_for_label }}">Username</label>
+                                <div>
+                                    {{ form.username }}
+                                </div>
+                            </div>
+                            <div>
+                                <label for="{{ form.email.id_for_label }}">Email</label>
+                                <div>
+                                    {{ form.email }}
+                                </div>
+                            </div>
+                            <div>
+                                <label for="{{ form.password.id_for_label }}">Password</label>
+                                <div>
+                                    {{ form.password }}
+                                </div>
+                            </div>
+                            <div>
+                                <label for="{{ form.password_repeat.id_for_label }}">Confirm password:</label>
+                                <div>
+                                    {{ form.password_repeat }}
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 30px;">
+                            <input type="submit" value="Register" class="btn btn-success">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

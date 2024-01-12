@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<main class="mt-1 pt-1">
+    <div class="container mt-5" style="    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 72vh;">
+        <form action="{% url 'spicy:user_login' %}" method="post">
+            {% csrf_token %}
+            <div class="">
+                <div class="" style="
+                width: 300px;
+                height: 250px;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+
+                    <div>
+                        {% if error_message %}
+                            <p class="bg-danger p-d ml-b">{{ error_message }}</p>
+                        {% endif %}
+                        <div style="margin-bottom: 5px;">
+                            <div class="">
+                                <label for="username" class="">Username:</label>
+                                <div class="">
+                                    <input name="username" value="" type="text" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="">
+                                <label for="password" class="">Password:</label>
+                                <div class="">
+                                    <input name="password" type="password" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="" style="margin-top: 30px;">
+                            <input name="login" type="submit" value="Login" class="btn btn-success" /> &nbsp;
+                            <a href="">Register</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>
+{% endblock %}
